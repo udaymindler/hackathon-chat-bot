@@ -1,0 +1,126 @@
+.container-second {
+    margin-left: auto;
+    margin-right: auto;
+    width: 420px;
+    background-color: #fff;
+    border-radius: 8px;
+    border: 1px solid gray;
+    height: 500px;
+
+    .qAndA {
+        width: 420px;
+        height: 400px;
+        background-color: #fff;
+
+        .backt {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 1rem;
+            height: 20vh;
+            width: 90%;
+            height: 30px;
+            border-bottom: 1px solid gray;
+
+            .small-circle {
+                width: 1rem;
+                height: 1rem;
+                padding: 2px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                border-radius: 50%;
+                border: 1px solid gray;
+            }
+        }
+    }
+
+
+    // .content{
+    //     padding: 4px;
+    //     height: 390px;
+    //     background-color: #92b2c2;
+    //     overflow-y: scroll;
+    //     display: block;
+    //     .ques{
+    //         max-width: 10rem;
+    //         word-break: break-all;
+    //         margin-top: 4px;
+    //         margin-bottom: 4px;
+    //         display: flex;
+    //         float: right;
+    //     }
+    //     .ans{
+    //         max-width: 11rem;
+    //         word-break: break-all;
+    //         margin-top: 4px;
+    //         margin-bottom: 4px;
+    //         display: flex;
+    //         align-items: left;
+    //     }
+    // }
+    .content {
+        padding: 4px;
+        height: 340px;
+        background-color: #d8e4eb;
+        overflow-y: scroll;
+        display: flex;
+        /* Change display to flex */
+        flex-direction: column;
+        /* Stack child elements vertically */
+    }
+
+    .ques {
+        max-width: 15rem;
+        word-break: break-all;
+        margin-top: auto;
+        margin-bottom: 4px;
+        align-self: flex-end;
+        border: 1px solid rgb(214, 214, 152);
+        background-color: #c283db;
+        padding: 2px;
+    }
+
+    .ans {
+        max-width: 18rem;
+        word-break: break-all;
+        margin-top: 4px;
+        margin-bottom: 4px;
+        align-self: flex-start;
+        border: 1px solid rgb(214, 214, 152);
+        background-color:  #c283db;
+        padding: 2px;
+    }
+    .suggestions{
+        max-width: 100%;
+        word-break: break-all;
+        margin: 4px;
+        height: 2.5rem;
+        overflow-y: scroll;
+        color: black;
+        font-size: 18px;
+        font-weight: 500;
+    }
+
+    .footer {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        border-top: 1px solid gray;
+        padding: 2px;
+
+        .btns {
+            border-radius: 8px;
+            border: 1px solid #1480B7;
+            color: #1480B7;
+            text-align: center;
+            font-size: 16px;
+            font-weight: 700;
+            padding: 4px;
+        }
+
+        input {
+            width: 80%;
+        }
+    }
+}
