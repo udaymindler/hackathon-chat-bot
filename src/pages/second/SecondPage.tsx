@@ -11,6 +11,8 @@ const SecondPage = (props: { setIsSecondPage: any, isSecondPage: boolean }) => {
 
     const [previousQueries, setPreviousQueries] = useState<Array<string>>([]); // Specify the type as an array of strings
     const [searchQuery, setSearchQuery] = useState<string>('');
+    const [currentQuery, setCurrentQuery] = useState<string>('');
+    const [data, setData] = useState<any>([])
 
     useEffect(() => {
         const fetchPreviousQueries = async () => {
@@ -28,11 +30,26 @@ const SecondPage = (props: { setIsSecondPage: any, isSecondPage: boolean }) => {
     }, []);
 
     const handleSearch = async () => {
+       
         try {
-            const response = await axios.post('https://ca0d-65-0-227-116.ngrok-free.app/chatbot/query', {
+            const response: any = await axios.post('https://8617-65-0-227-116.ngrok-free.app/chatbot/query', {
                 query: searchQuery,
                 previousQueries: previousQueries,
             });
+          
+            setData([
+                ...data,
+                {
+                    text: searchQuery,
+                    type: "Q"
+                },
+                {
+                    text: response?.data.answer.response
+                    ,
+                    type: "A"
+                },
+            ])
+            setSearchQuery("")
         } catch (error) {
             console.error('Error fetching data:', error);
         }
@@ -47,14 +64,18 @@ const SecondPage = (props: { setIsSecondPage: any, isSecondPage: boolean }) => {
                             <div onClick={toggleSecondPage} className='small-circle'>
                                 <ArrowBackIcon />
                             </div>
+                            <div>Chat with AI</div>
                         </div>
                         <div className='content'>
-                            <div className="ques">what is mip and msh</div>
-                            <div className='ans'>This program is designed to help you excel in your educational and career journey, and promote holistic self-development. </div>
-                            <div className="ques">what is mip and msh</div>
-                            <div className='ans'>This program is designed to help you excel in your educational and career journey, and promote holistic self-development. </div>
-                            <div className="ques">whadfwef sefwefvwefv werwef nd msh</div>
-                            <div className='ans'>This program is designed to help you excel in your educational and career journey, and promote holistic self-development. </div>
+                            
+                            {
+                                data.map((res: {type:string;text:string;}) => {
+                                    return (
+                                        res.type === "Q" ? <div className="ques">{res.text}</div> :
+                                            <div className='ans'>{res.text} </div>
+                                    )
+                                })
+                            }
                         </div>
 
                         <div className="suggestions">Type your queries here</div>
